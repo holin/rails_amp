@@ -34,6 +34,18 @@ create  config/rails_amp.yml
 create  app/views/layouts/rails_amp_application.amp.erb
 ```
 
+In app/controller/application_controller.rb
+
+```ruby
+  ....
+  layout :select_layout
+
+  def select_layout
+    @is_amp = params[:format].to_s == "amp"
+    @is_amp ? 'rails_amp_application' : 'application'
+  end
+```
+
 In config/initializers/mime_types.rb:
 
 ```ruby
